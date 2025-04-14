@@ -1,0 +1,22 @@
+services:
+  database:
+    container_name: database-postgres
+    image: postgres:17-alpine3.20
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: asdf
+      POSTGRES_USER: asdf
+      POSTGRES_DB: api-test
+
+  backend:
+    image: nowyoucanseeme/spring-api-test:latest
+    container_name: app-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/api-test
+      SPRING_DATASOURCE_USERNAME: asdf
+      SPRING_DATASOURCE_PASSWORD: asdf
+    depends_on:
+      - database
