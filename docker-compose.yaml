@@ -10,7 +10,7 @@ services:
       POSTGRES_DB: api-test
 
   backend:
-    image: nowyoucanseeme/spring-api-test:latest
+    image: nowyoucanseeme/spring-api-test:0.0.7
     container_name: app-backend
     ports:
       - "8080:8080"
